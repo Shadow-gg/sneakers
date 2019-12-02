@@ -111,7 +111,7 @@ class QueueWithoutAnExchangeWorker
   from_queue 'defaults',
               :ack => true,
               :exchange => nil
-
+  
   def work(msg)
     msg
   end
@@ -285,7 +285,7 @@ describe Sneakers::Worker do
           :amqp_heartbeat => 30
         )
       end
-
+      
       it "should build a queue without an exchange given nil exchange option is provided" do
         QueueWithoutAnExchangeWorker.new.queue.exchange.must_be_nil
       end

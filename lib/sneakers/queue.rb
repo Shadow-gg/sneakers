@@ -41,6 +41,8 @@ class Sneakers::Queue
 
     queue = @channel.queue(@name, @opts[:queue_options])
 
+    # If no exchange has been passed, do not try to create any binding on the queue
+    # We will work on the queue directly
     if @exchange
       if exchange_name.length > 0
         routing_keys.each do |key|
